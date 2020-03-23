@@ -38,8 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'products',
-    'polls.apps.PollsConfig'
+    'polls.apps.PollsConfig',
+    'highcharts'
 ]
 
 MIDDLEWARE = [
