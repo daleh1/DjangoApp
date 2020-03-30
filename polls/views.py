@@ -6,8 +6,25 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.views import generic
 
+import random
+
 from .models import Choice, Question
 
+from highcharts.views import HighChartsBarView
+
+class BarView(HighChartsBarView):
+    template_name = 'polls/hct.html'
+    categories = ['Orange', 'Bananas', 'Apples']
+
+    @property
+    def series(self):
+        result = []
+        for name in ('Joe', 'Jack', 'William', 'Averell'):
+            data = []
+            for x in range(len(self.categories)):
+                data.append(random.randint(0, 10))
+            result.append({'name': name, "data": data})
+        return result
 
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
